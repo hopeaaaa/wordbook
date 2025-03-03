@@ -46,6 +46,7 @@ Adults interested in expanding their french vocabulary
 - Landing page/Game screen
 - Vocab list
 
+
 ### Mockups
 
 #### Home Page
@@ -57,7 +58,7 @@ Adults interested in expanding their french vocabulary
 ### Data
 
 ![](sql-diagram.png)
-
+![sql-diagram](https://github.com/user-attachments/assets/c0d1d5ce-54c9-4b2a-ad53-51d71151eeab)
 ### Endpoints
 
 **GET /word**
