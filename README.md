@@ -1,34 +1,24 @@
 # Project Title
-Good* Coffee
+Wordbook
 
 ## Overview
 
-Good* Coffee is a place for third-wave coffee enthusiasts to find and keep track of the best cafés.
+Wordbook is a hidden objects game for casual, playful, language learning. 
 
-### Problem
+### Problem/Opportunity
 
-Third-wave coffee is coffee made with high-quality beans typically sourced from individual farms and roasted more lightly to bring out their distinctive flavors. There is no certain way to know the quality of a café's coffee before purchasing and having your first sip. When looking for a third-wave café in a given area, people generally have to go through the time-consuming process of doing a Google search for coffee near a location then manually analyze images, reviews, etc. for each café before deciding if it might be a café serving a high-quality cup of third-wave coffee.
+I want to make a game focused on increasing vocabulary in foreign languages. 
 
 ### User Profile
 
-- Coffee drinkers:
-    - looking for a café close to their current location
-    - looking for a café close to a given location for the future
-    - that want to keep track of the cafés they've tried
+Adults interested in expanding their french vocabulary
 
 ### Features
 
-- As a user, I want to be able to find the closest café close to my current location
-- As a user, I want to be able to find the closest café close to any given location
-- As a user, I want to be able to find the highest-rated café within a certain distance from any given location
-
-- As a user, I want to be able to create an account to manage my visited cafés
-- As a user, I want to be able to login to my account to manage my visited cafés
-
-- As a logged in user, I want to be able to rate a visited café out of 5 coffee cups
-- As a logged in user, I want to be able to update a rating of a café out of 5 coffee cups
-- As a logged in user, I want to be able to see my visited cafés
-- As a logged in user, I want to be able to filter my visited cafés by location
+- identify and select objects
+- create and view a list of vocabulary
+- hear correct pronunciation
+- search and add to the list
 
 ## Implementation
 
@@ -49,15 +39,12 @@ Third-wave coffee is coffee made with high-quality beans typically sourced from 
 
 ### APIs
 
-- No external APIs will be used for the first sprint
+- https://libretranslate.com/
 
 ### Sitemap
 
-- Home page
-- List cafés
-- View + Rate a café
-- Register
-- Login
+- Landing page/Game screen
+- Vocab list
 
 ### Mockups
 
@@ -67,36 +54,17 @@ Third-wave coffee is coffee made with high-quality beans typically sourced from 
 #### Register Page
 ![](register.png)
 
-#### Login Page
-![](login.png)
-
-#### Enter Location Page
-![](enter-location.png)
-
-#### View Cafés Page
-![](view-cafes.png)
-
-#### View Café Page
-![](view-cafe.png)
-
-#### View Café Page (Rated state)
-![](view-cafe-rated.png)
-
-
 ### Data
 
 ![](sql-diagram.png)
 
 ### Endpoints
 
-**GET /cafes**
+**GET /word**
 
-- Get cafés, with an optional "visited" if the user is logged in or not
-
+- Get word
 Parameters:
-- longitude: User-provided location as a number
-- latitude: User-provided location as a number
-- token (optional): JWT used to add "visited" boolean
+- ???
 
 
 Response:
@@ -261,15 +229,6 @@ Response:
 
 ## Nice-to-haves
 
-- Integrate Google Places / Maps
-    - View more details about a café
-    - Visual radius functionality
-- Forgot password functionality
-- Ability to add a café 
-- Elite status badging for users and cafés: Gamify user ratings
-- Expand rating system
-    - Coffee
-    - Ambiance
-    - Staff
-- Expanded user information: full name, favorite café
-- Unit and Integration Tests
+- sound
+- animations
+- other languages
