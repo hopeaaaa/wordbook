@@ -4,14 +4,16 @@ Wordbook
 ## Overview
 
 Wordbook is a hidden objects game for casual, playful, language learning. 
+Hidden objects games are a subgenre of puzzle games where players must find items hidden on a busy or cluttered scene. 
 
 ### Problem/Opportunity
 
-I want to make a game focused on increasing vocabulary in foreign languages. 
+To make a cozy game focused on increasing vocabulary in foreign languages. 
+Cozy games are a genre of gaming that emphasize relaxation. 
 
 ### User Profile
 
-Adults interested in expanding their french vocabulary
+Adults interested in expanding their French vocabulary.
 
 ### Features
 
@@ -25,7 +27,6 @@ Adults interested in expanding their french vocabulary
 ### Tech Stack
 
 - React
-- TypeScript
 - MySQL
 - Express
 - Client libraries: 
