@@ -1,0 +1,147 @@
+@use "../styles/partials/mixins" as *;
+@use "../styles/partials/typography" as *;
+@use "../styles/partials/variables" as *;
+/* @use "../styles/partials/global" as *; */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  background-color: $primary-bg;
+}
+
+.header {
+  &__container {
+    /*     border: solid yellow 2px; */
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__title {
+    font-family: $ff-newsreadern;
+    font-size: 2.5rem;
+    line-height: 2.5rem;
+    font-weight: 500;
+    color: $primary-text;
+    margin-bottom: 1rem;
+  }
+
+  &__filtersbtn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6875rem 1.375rem;
+    background-color: $primary-bg;
+    color: $primary-accent;
+    border: solid;
+    border-width: 2px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: $ff-outfit500;
+    font-weight: 500;
+    font-size: 0.875rem;
+
+    &:hover {
+      background-color: $primary-accent;
+      color: $primary-bg;
+    }
+
+    &--active {
+      color: $primary-bg;
+      background-color: $primary-accent;
+    }
+
+    .icon {
+      background-color: transparent;
+    }
+  }
+
+  &__ficon {
+    background-color: transparent;
+    /*  filter: invert(100%); */
+  }
+
+  /*   &__ffcontainer {
+    border: solid orange 2px;
+    height: 0;
+    @media (min-width: 1278px) {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+  } */
+
+  &__fcontainer {
+    height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    background-color: $alternate-bg;
+    /*   border: solid red 2px; */
+
+    &.open {
+      height: 100%;
+      @media (min-width: 1278px) {
+        height: 3000px;
+      }
+    }
+
+    @media (min-width: 1278px) {
+      position: absolute;
+      top: 100px;
+      right: 0;
+      left: auto;
+      bottom: 0;
+      width: 400px;
+      height: 100vh;
+      transform: translateX(100%);
+      z-index: 3;
+
+      &.open {
+        transform: translateX(0);
+      }
+    }
+  }
+
+  &__ftitle {
+    background-color: $alternate-bg;
+    padding: 2rem 2rem 1rem 2rem;
+    font-family: $ff-outfit500;
+    line-height: normal;
+    font-weight: 500;
+    font-size: 1.5rem;
+    color: $primary-text;
+  }
+
+  &__fgrid {
+    background-color: $alternate-bg;
+    padding: 0 2rem 0 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding-bottom: 8rem;
+    padding-top: 1rem;
+  }
+
+  &__ftag {
+    padding: 8px 12px;
+    background-color: $alternate-text;
+    border: 2px solid $primary-accent;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: $primary-accent;
+    font-family: $ff-outfit500;
+    font-weight: 500;
+
+    &:hover {
+      background-color: $primary-accent;
+      color: $primary-bg;
+    }
+
+    &--active {
+      color: $primary-bg;
+      background-color: $primary-accent;
+    }
+  }
+}

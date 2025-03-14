@@ -1,0 +1,16 @@
+@use "./styles/partials/font" as *;
+@use "./styles/partials/mixins" as *;
+@use "./styles/partials/variables" as *;
+
+body {
+  font-family: "Titillium Web", sans-serif;
+  margin: 0rem;
+  box-sizing: border-box;
+  background-color: $light-grey;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
