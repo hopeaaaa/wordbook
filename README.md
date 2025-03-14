@@ -47,17 +47,17 @@ GET /alternatives/:productId – Returns safer product recommendations.
 POST /user/preferences – Saves user skin type and preferences.
 GET /user/saved – Fetches user’s saved products.
 Roadmap
-Day Task
-1 Set up backend (MySQL), initialize the database schema.
-2 Implement AI-Powered Ingredient Breakdown – Integrate Google Cloud Vision API.
-3 Implement NLP categorization for ingredient analysis and match extracted ingredients to database records.
-4 Develop database structure and populate ingredient database (harmful, beneficial, and neutral ingredients).
-5 Build frontend (React) and design the main UI components.
-6 Implement API endpoints to support ingredient breakdown and integrate backend with frontend.
-7 Develop Personalized Skin Type Analysis – User quiz and preference storage.
-8 Implement Better Product Alternatives Finder – Fetch alternative product suggestions based on ingredient analysis.
-9 Develop Smart Ingredient Glossary – Create search & learn functionality for ingredient definitions.
-10 Final UI/UX polish, bug fixes, full app testing, and deployment.
+Day	Task
+1	Set up backend (MySQL), initialize the database schema.
+2	Implement AI-Powered Ingredient Breakdown – Integrate Google Cloud Vision API.
+3	Implement NLP categorization for ingredient analysis and match extracted ingredients to database records.
+4	Develop database structure and populate ingredient database (harmful, beneficial, and neutral ingredients).
+5	Build frontend (React) and design the main UI components.
+6	Implement API endpoints to support ingredient breakdown and integrate backend with frontend.
+7	Develop Personalized Skin Type Analysis – User quiz and preference storage.
+8	Implement Better Product Alternatives Finder – Fetch alternative product suggestions based on ingredient analysis.
+9	Develop Smart Ingredient Glossary – Create search & learn functionality for ingredient definitions.
+10	Final UI/UX polish, bug fixes, full app testing, and deployment.
 Future Implementations
 E-commerce Integration – Direct links to buy recommended products from Sephora, Amazon, or Ulta.
 User Reviews & Community Ratings – Allow users to rate and review ingredients based on personal experiences.
