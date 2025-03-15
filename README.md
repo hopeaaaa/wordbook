@@ -1,9 +1,12 @@
-Skintuition
-Overview
-Skintuition is an AI-powered skincare ingredient analyzer that helps users quickly identify harmful and beneficial ingredients in their skincare products by uploading an image of an ingredient list or pasting text.
+# Project Title
+Wordbook
 
-Problem Space
-Skincare consumers often struggle to understand the ingredients in their products, leading to the use of potentially harmful substances that may cause long-term damage. Skintuition simplifies this process using AI and a user-friendly interface, making skincare transparency accessible to everyone.
+## Overview
+
+Wordbook is a hidden objects game for playful, casual, language learning.
+
+### Problem
+This app provides users a simple and engaging way to expand their vocabulary in a foreign language, addressing the challenge of word retention and efficiency.
 
 User Profile
 Primary Users:
