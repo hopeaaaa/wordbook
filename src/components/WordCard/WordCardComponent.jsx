@@ -1,29 +1,17 @@
 import "./WordCardComponent.scss";
 import { useState } from "react";
 
-const URL = "http://localhost:5000/translate";
-const audioUrl = "http://localhost:5000/public/frenchPronunciation.mp3";
-
 function WordCardComponent() {
   const [word, setWord] = useState("");
   const [translatedWord, setTranslatedWord] = useState(null);
   const [error, setError] = useState(null);
   const [addedWords, setAddedWords] = useState([]);
   const [audioUrl, setAudioUrl] = useState(null);
+  const [savedWord, setSavedWord] = useState("");
 
-  //adds word to list
-  const addWord = () => {
-    if (translatedWord) {
-      setAddedWords([...addedWords, { english: word, french: translatedWord }]);
-    }
-  };
+  const URL = "http://localhost:5000/translate";
 
-  //removes word from list
-  const removeWord = (index) => {
-    setAddedWords(addedWords.filter((_, i) => i !== index));
-  };
-
-  //fetch translation and pronunciation
+  //fetch translation
   const fetchTranslation = async () => {
     if (!word) return;
 
@@ -47,10 +35,11 @@ function WordCardComponent() {
 
       const translatedText = result.translation;
       setTranslatedWord(translatedText);
+      setSavedWord(word);
       setError(null);
 
       // Fetch pronunciation
-      playAudio(translatedText);
+      fetchPronunciation(translatedText);
     } catch (error) {
       console.error("Error fetching translation:", error);
       setError("Translation failed");
@@ -58,7 +47,8 @@ function WordCardComponent() {
     }
   };
 
-  const playAudio = async (text) => {
+  //fetch pronunciation url
+  const fetchPronunciation = async (text) => {
     try {
       const response = await fetch("http://localhost:5000/get-pronunciation", {
         method: "POST",
@@ -73,15 +63,37 @@ function WordCardComponent() {
         throw new Error(errorData.error || "Error fetching pronunciation");
       }
 
-      /*       const data = await response.json();
-      const audioUrl = http://localhost:5000${data.audioUrl};
-      console.log("Playing audio:", audioUrl); */
-
-      const audio = new Audio(audioUrl);
-      await audio.play();
+      const data = await response.json();
+      setAudioUrl(`http://localhost:5000${data.audioUrl}`);
     } catch (error) {
       console.error("Error fetching pronunciation:", error);
+      setAudioUrl(null);
     }
+  };
+
+  // Play audio when button is clicked
+  const playAudio = () => {
+    if (!audioUrl) return;
+    const audio = new Audio(audioUrl);
+    audio.play().catch((error) => console.error("Error playing audio:", error));
+  };
+
+  //adds word to list when button is clicked
+  const addWord = () => {
+    if (savedWord && translatedWord) {
+      const newWord = { english: savedWord, french: translatedWord };
+      setAddedWords((prevWords) => {
+        const updatedWords = [...prevWords, newWord];
+        return updatedWords;
+      });
+      setSavedWord("");
+      setWord("");
+    }
+  };
+
+  //removes word from list
+  const removeWord = (index) => {
+    setAddedWords(addedWords.filter((_, i) => i !== index));
   };
 
   return (
@@ -119,6 +131,7 @@ function WordCardComponent() {
         </>
       )}
       <div className="wordcard__added-words">
+        {console.log(addedWords)}
         {addedWords.length === 0 ? (
           <p className="wordcard__prompt-text">Add words!</p>
         ) : (
