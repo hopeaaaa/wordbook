@@ -1,49 +1,126 @@
 import "./WordCardComponent.scss";
 import { useState } from "react";
-import { Link } from "react-router-dom";
 
-const URL = "https://api.dictionaryapi.dev/api/v2/entries/en/";
+const URL = "http://localhost:5000/translate";
+const audioUrl = "http://localhost:5000/public/frenchPronunciation.mp3";
+/* const URL = "https://api.dictionaryapi.dev/api/v2/entries/en/"; */
 
 function WordCardComponent() {
   const [word, setWord] = useState("");
-  const [data, setData] = useState(null);
+  const [translatedWord, setTranslatedWord] = useState(null);
   const [error, setError] = useState(null);
   const [addedWords, setAddedWords] = useState([]);
+  /*   const [frenchPhonetic, setFrenchPhonetic] = useState(null);
+  const [frenchAudio, setFrenchAudio] = useState(null); */
+  const [audioUrl, setAudioUrl] = useState(null);
 
-  const fetchWordData = async () => {
+  //adds word to list
+  const addWord = () => {
+    if (translatedWord) {
+      setAddedWords([...addedWords, { english: word, french: translatedWord }]);
+    }
+  };
+
+  //removes word from list
+  const removeWord = (index) => {
+    setAddedWords(addedWords.filter((_, i) => i !== index));
+  };
+
+  //fetch translation and pronunciation
+  const fetchTranslation = async () => {
     if (!word) return;
     try {
-      const response = await fetch(`${URL}${word}`);
+      const response = await fetch(URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ text: word, targetLang: "fr" }),
+      });
+
       const result = await response.json();
       setWord("");
 
-      if (response.ok) {
-        setData(result[0]);
-        setError(null);
-      } else {
-        setData(null);
-        setError("Cannot find word");
+      if (!response.ok) {
+        setTranslatedWord(null);
+        setError("cannot translate");
+        return;
       }
+
+      const translatedText = result.translation;
+      setTranslatedWord(translatedText);
+      setError(null);
+
+      const audioResponse = await fetch(
+        "http://localhost:5000/get-pronunciation",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ text: translatedText }),
+        }
+      );
+
+      const audioResult = await audioResponse.json();
+      if (audioResponse.ok) {
+        setAudioUrl(audioResult.audioUrl);
+      } else {
+        setError("could not fetch audio");
+        setAudioUrl(null);
+      }
+
+      /*       const dictionaryResponse = await fetch(
+        `https://api.dictionaryapi.dev/api/v2/entries/fr/${translatedText}`
+      );
+
+      const dictionaryResult = await dictionaryResponse.json();
+
+      if (dictionaryResponse.ok) {
+        const phoneticsData = dictionaryResult[0]?.phonetics || [];
+        const audioData = phoneticsData.find((p) => p.text)?.audio || null;
+        const phoneticsText =
+          phoneticsData.find((p) => p.text)?.text || "no phonetics;";
+
+        setFrenchPhonetic(phoneticsText);
+        setFrenchAudio(audioData);
+      } else {
+        setFrenchPhonetic("no phonetics avail");
+        setFrenchAudio(null);
+      }catch (err) {
+        setError("error");
+        setTranslatedWord(null);
+        setFrenchPhonetic(null);
+        setFrenchAudio(null);
+      } */
     } catch (err) {
-      setError("error fetching data");
-      setData(null);
+      setError("error");
+      translatedWord(null);
+      setAudioUrl(null);
     }
-  };
 
-  const playSound = () => {
-    if (data?.phonetics?.[0]?.audio) {
-      new Audio(data.phonetics[0].audio).play();
-    }
-  };
+    const playAudio = () => {
+      try{
+        const response = await fetch(URL, {
+          method: "POST",
+          headers: {"Content-Type": "application/json"},
+          body: JSON.stringify({text:""}),
+        });
 
-  const addWord = () => {
-    if (data) {
-      setAddedWords([...addedWords, data]);
-    }
-  };
+        const data = await response.json();
 
-  const removeWord = (index) => {
-    setAddedWords(addedWords.filter((_, i) => i !== index));
+        if(!response.ok){
+          throw new Error(data.error || "error fetching pronunciation");
+        }
+
+        const audioUrl = `http://localhost:5000${data.audioUrl}`;
+
+        const audio = new Audio(audioUrl);
+        audio.play().catch((error)=> console.error("error", error));
+      } catch (error){
+        console.error("error!")
+      }
+    };
   };
 
   return (
@@ -55,28 +132,27 @@ function WordCardComponent() {
         onChange={(e) => setWord(e.target.value)}
         className="wordcard__search-input"
       />
-      <button className="wordcard__searchbtn" onClick={fetchWordData}>
+      <button className="wordcard__searchbtn" onClick={fetchTranslation}>
         translate
       </button>
       {error && <p className="wordcard__search-error">{error}</p>}
 
-      {data && (
+      {translatedWord && (
         <>
-          <h2 className="wordcard__fetchedword">{data.word}</h2>
-          <p className="wordcard__phonetic">
-            {data.phonetic || "No phonetic available"}
-          </p>
-          <button className="wordcard__soundbtn" onClick={playSound}>
-            🔊 Pronunciation
-          </button>
-          <p>
-            {data.meanings[0]?.definitions[0]?.definition ||
-              "No definition available"}
-          </p>
+          <h2 className="wordcard__fetchedword">{translatedWord}</h2>
+
+          {audioUrl && (
+            <button className="wordcard__soundbtn" onClick={playAudio}>
+              🔊 Pronunciation
+            </button>
+          )}
           <button className="wordcard__addbtn" onClick={addWord}>
             +
           </button>
-          <button className="wordcard__clearbtn" onClick={() => setData(null)}>
+          <button
+            className="wordcard__clearbtn"
+            onClick={() => setTranslatedWord(null)}
+          >
             clear
           </button>
         </>
@@ -90,9 +166,9 @@ function WordCardComponent() {
             {addedWords.map((wordData, index) => (
               <div className="wordcard__fetched-content" key={index}>
                 <strong className="wordcard__fetched-title">
-                  {wordData.word}
+                  {wordData.english}
                 </strong>
-                : {wordData.meanings[0]?.definitions[0]?.definition}
+                : {wordData.french}
                 <button
                   className="wordcard__removebtn"
                   onClick={() => removeWord(index)}
