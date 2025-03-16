@@ -26,6 +26,7 @@ function WordCardComponent() {
   //fetch translation and pronunciation
   const fetchTranslation = async () => {
     if (!word) return;
+
     try {
       const response = await fetch(URL, {
         method: "POST",
@@ -40,7 +41,7 @@ function WordCardComponent() {
 
       if (!response.ok) {
         setTranslatedWord(null);
-        setError("cannot translate");
+        setError("Cannot translate");
         return;
       }
 
@@ -48,52 +49,38 @@ function WordCardComponent() {
       setTranslatedWord(translatedText);
       setError(null);
 
-      const audioResponse = await fetch(
-        "http://localhost:5000/get-pronunciation",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ text: translatedText }),
-        }
-      );
+      // Fetch pronunciation
+      playAudio(translatedText);
+    } catch (error) {
+      console.error("Error fetching translation:", error);
+      setError("Translation failed");
+      setTranslatedWord(null);
+    }
+  };
 
-      const audioResult = await audioResponse.json();
-      if (audioResponse.ok) {
-        setAudioUrl(audioResult.audioUrl);
-      } else {
-        setError("could not fetch audio");
-        setAudioUrl(null);
+  const playAudio = async (text) => {
+    try {
+      const response = await fetch("http://localhost:5000/get-pronunciation", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ text }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || "Error fetching pronunciation");
       }
 
-      /*       const dictionaryResponse = await fetch(
-        `https://api.dictionaryapi.dev/api/v2/entries/fr/${translatedText}`
-      );
+      /*       const data = await response.json();
+      const audioUrl = http://localhost:5000${data.audioUrl};
+      console.log("Playing audio:", audioUrl); */
 
-      const dictionaryResult = await dictionaryResponse.json();
-
-      if (dictionaryResponse.ok) {
-        const phoneticsData = dictionaryResult[0]?.phonetics || [];
-        const audioData = phoneticsData.find((p) => p.text)?.audio || null;
-        const phoneticsText =
-          phoneticsData.find((p) => p.text)?.text || "no phonetics;";
-
-        setFrenchPhonetic(phoneticsText);
-        setFrenchAudio(audioData);
-      } else {
-        setFrenchPhonetic("no phonetics avail");
-        setFrenchAudio(null);
-      }catch (err) {
-        setError("error");
-        setTranslatedWord(null);
-        setFrenchPhonetic(null);
-        setFrenchAudio(null);
-      } */
-    } catch (err) {
-      setError("error");
-      translatedWord(null);
-      setAudioUrl(null);
+      const audio = new Audio(audioUrl);
+      await audio.play();
+    } catch (error) {
+      console.error("Error fetching pronunciation:", error);
     }
   };
 
@@ -132,7 +119,6 @@ function WordCardComponent() {
         </>
       )}
       <div className="wordcard__added-words">
-        {/*  <h3>Added Words:</h3> */}
         {addedWords.length === 0 ? (
           <p className="wordcard__prompt-text">Add words!</p>
         ) : (
