@@ -38,7 +38,7 @@ function WordCardComponent() {
       setSavedWord(word);
       setError(null);
 
-      // Fetch pronunciation
+      //fetch pronunciation
       fetchPronunciation(translatedText);
     } catch (error) {
       console.error("Error fetching translation:", error);
@@ -71,14 +71,14 @@ function WordCardComponent() {
     }
   };
 
-  // Play audio when button is clicked
+  // play audio when button is clicked
   const playAudio = () => {
     if (!audioUrl) return;
     const audio = new Audio(audioUrl);
     audio.play().catch((error) => console.error("Error playing audio:", error));
   };
 
-  //adds word to list when button is clicked
+  //add word to list when button is clicked
   const addWord = () => {
     if (savedWord && translatedWord) {
       const newWord = { english: savedWord, french: translatedWord };
@@ -100,7 +100,7 @@ function WordCardComponent() {
     <section className="wordcard">
       <input
         type="text"
-        placeholder="enter word..."
+        placeholder="enter a word..."
         value={word}
         onChange={(e) => setWord(e.target.value)}
         className="wordcard__search-input"
@@ -112,36 +112,37 @@ function WordCardComponent() {
 
       {translatedWord && (
         <>
-          <h2 className="wordcard__fetchedword">{translatedWord}</h2>
-
-          {audioUrl && (
-            <button className="wordcard__soundbtn" onClick={playAudio}>
-              🔊 Pronunciation
+          <h2 className="wordcard__fetchedtitle">{translatedWord}</h2>
+          <div className="wordcard__btn-container">
+            {audioUrl && (
+              <button className="wordcard__soundbtn" onClick={playAudio}>
+                🔊 Pronunciation
+              </button>
+            )}
+            <button className="wordcard__addbtn" onClick={addWord}>
+              +
             </button>
-          )}
-          <button className="wordcard__addbtn" onClick={addWord}>
-            +
-          </button>
-          <button
-            className="wordcard__clearbtn"
-            onClick={() => setTranslatedWord(null)}
-          >
-            clear
-          </button>
+            <button
+              className="wordcard__clearbtn"
+              onClick={() => setTranslatedWord(null)}
+            >
+              clear
+            </button>
+          </div>
         </>
       )}
       <div className="wordcard__added-words">
         {console.log(addedWords)}
         {addedWords.length === 0 ? (
-          <p className="wordcard__prompt-text">Add words!</p>
+          <p className="wordcard__prompt">Add words!</p>
         ) : (
           <div className="wordcard__fetched-card">
             {addedWords.map((wordData, index) => (
               <div className="wordcard__fetched-content" key={index}>
                 <strong className="wordcard__fetched-title">
                   {wordData.english}
-                </strong>
-                : {wordData.french}
+                </strong>{" "}
+                / {wordData.french}
                 <button
                   className="wordcard__removebtn"
                   onClick={() => removeWord(index)}

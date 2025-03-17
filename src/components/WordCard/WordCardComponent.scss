@@ -1,10 +1,74 @@
-/* .wordcard {
-  border: solid;
+/* * {
+  background-color: aqua;
 } */
 
-/* .added-words {
-  border: solid;
-} */
-.wordcard__fetched-content {
-  border: solid;
+.wordcard {
+  background-color: green;
+  padding: 2rem;
+
+  &__search-input {
+    background-image: url("../../assets/icons/search-24px.svg");
+    background-position: right 10px center;
+    background-repeat: no-repeat;
+    border-radius: 0.25rem;
+
+    &:focus,
+    &:focus-visible {
+      border: 1px solid;
+      outline: none;
+    }
+  }
+
+  &__searchbtn {
+    background-color: yellow;
+    border-radius: 1rem;
+  }
+
+  &__search-error {
+    color: white;
+  }
+
+  &__prompt {
+    font-style: italic;
+    color: white;
+  }
+
+  &__fetchedtitle {
+    color: white;
+  }
+
+  &__soundbtn {
+    background-color: yellow;
+    border-radius: 1rem;
+  }
+
+  &__addbtn {
+    background-color: yellow;
+    border-radius: 1rem;
+  }
+
+  &__clearbtn {
+    background-color: yellow;
+    border-radius: 1rem;
+  }
+
+  &__removebtn {
+    background-color: yellow;
+    border-radius: 1rem;
+  }
+
+  &__btn-container {
+    display: flex;
+    width: 500px;
+    margin-bottom: 2rem;
+  }
+
+  //fetched list
+  &__fetched-content {
+    border: solid;
+    margin: 1rem 0;
+    border-radius: 1rem;
+    width: max-content;
+    padding: 2rem;
+  }
 }
