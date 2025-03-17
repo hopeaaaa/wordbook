@@ -27,7 +27,7 @@ Primary Users:
 ### Tech Stack
 * Frontend: React.js, SCSS for styling
 * Backend: MySQL (using Workbench for database management)
-* APIs: Google Translate 
+* APIs: Google Translate, Google Speech to Text, Google Vision
 
 ### Sitemap
 
