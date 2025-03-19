@@ -1,69 +1,120 @@
+import { useRef, useState } from "react";
 import kitchensg from "../../assets/images/kitchensg.svg";
+import volumeIcon from "../../assets/icons/volume-icon.svg";
+import volumeMuteIcon from "../../assets/icons/volume-mute-icon.svg";
 import Tuath from "../../assets/audio/Tuath Dé Dunsany - Jesse Gallagher.mp3";
 import "./GameCardComponent.scss";
-import { useRef, useState } from "react";
 
-function GameCardComponent() {
+function GameCardComponent({ onHelpClick }) {
   const imgRef = useRef(null);
-  /*   const [isDragging, setIsDragging] = useState(false);
-  const [initialPosition, setInitialPosition] = useState({ x: 0, y: 0 });
-  const [dragStartPosition, setDragStartPosition] = useState({ x: 0, y: 0 }); */
-  const [flipped, setFlipped] = useState(false);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [showMagnifier, setShowMagnifier] = useState(false);
+  const audioRef = useRef(null);
+  const [isMuted, setIsMuted] = useState(true);
 
-  /*   const handleMouseDown = (e) => {
-    setIsDragging(true);
-    setDragStartPosition({
-      x: e.clientX - initialPosition.x,
-      y: e.clientY - initialPosition.y,
-    });
-    imgRef.current.style.cursor = "grabbing";
+  const words = [
+    { front: "Poêle", back: "Pan" },
+    { front: "Couteau", back: "Knife" },
+    { front: "Bouilloire", back: "Kettle" },
+    { front: "Tasse", back: "Cup" },
+    { front: "Maryse", back: "Spatula" },
+  ];
+
+  const [flippedStates, setFlippedStates] = useState(
+    Array(words.length).fill(false)
+  );
+
+  const toggleMute = () => {
+    const audio = audioRef.current;
+    if (audio) {
+      if (isMuted) {
+        audio.muted = false;
+        audio.play();
+      } else {
+        audio.muted = true;
+      }
+      setIsMuted(!isMuted);
+    }
+  };
+
+  const handleFlip = (index) => {
+    const newFlippedStates = [...flippedStates];
+    newFlippedStates[index] = !newFlippedStates[index];
+    setFlippedStates(newFlippedStates);
   };
 
   const handleMouseMove = (e) => {
-    if (!isDragging) return;
-    const newX = e.clientX - dragStartPosition.x;
-    const newY = e.clientY - dragStartPosition.y;
-    setInitialPosition({ x: newX, y: newY });
-    imgRef.current.style.transform = `translate(${newX}px, ${newY}px)`;
-  }; */
-
-  /* const handleMouseUp = () => {
-    setIsDragging(false);
-    imgRef.current.style.cursor = "grab";
-  }; */
+    const imgRect = imgRef.current.getBoundingClientRect();
+    const x = e.clientX - imgRect.left;
+    const y = e.clientY - imgRect.top;
+    setMousePosition({ x, y });
+  };
 
   return (
-    <div className="gamecard">
-      {/*       <p className="gamecard__intro">welcome...</p> */}
-      <audio className="gamecard__audioplayer" controls autoPlay muted>
-        <source src={Tuath} type="audio/mpeg" />
-      </audio>
-      <div className="gamecard__img-container">
-        <img
-          ref={imgRef}
-          src={kitchensg}
-          alt="beautiful illustration of a messy kitchen"
-          className="gamecard__img"
-          /*       onMouseDown={handleMouseDown}
-          onMouseMove={handleMouseMove}
-          onMouseUp={handleMouseUp}
-          onMouseLeave={handleMouseUp} */
-        />
-      </div>
-      <div
-        className={`gamecard__card ${flipped ? "flipped" : ""}`}
-        onClick={() => setFlipped(!flipped)}
-      >
-        <div className="gamecard__card-inner">
-          <div className="gamecard__front">Pomme</div>
-          <div className="gamecard__back">Apple</div>
+    <section className="gamecard">
+      <div className="gamecard__upper-container">
+        <button className="gamecard__help-btn" onClick={onHelpClick}>
+          ?
+        </button>
+        <div className="gamecard__audio-controls">
+          <button onClick={toggleMute} className="gamecard__volume-btn">
+            <img
+              className="gamecard__volume-icons"
+              src={isMuted ? volumeMuteIcon : volumeIcon}
+              alt={isMuted ? "Unmute" : "Mute"}
+            />
+          </button>
         </div>
-        {/*        <div className="gamecard__card-inner">
-          <div className="gamecard__front">1</div>
-          <div className="gamecard__back">2</div>
-        </div> */}
+        <audio
+          className="gamecard__audioplayer"
+          ref={audioRef}
+          autoPlay
+          muted={isMuted}
+        >
+          <source src={Tuath} type="audio/mpeg" />
+        </audio>
+        <div
+          className="gamecard__img-container"
+          onMouseMove={handleMouseMove}
+          onMouseEnter={() => setShowMagnifier(true)}
+          onMouseLeave={() => setShowMagnifier(false)}
+        >
+          <img
+            ref={imgRef}
+            src={kitchensg}
+            alt="beautiful illustration of a messy kitchen"
+            className="gamecard__img"
+          />
+          {showMagnifier && (
+            <div
+              className="gamecard__magnifyingglass"
+              style={{
+                left: `${mousePosition.x - 75}px`,
+                top: `${mousePosition.y - 75}px`,
+                backgroundImage: `url(${kitchensg})`,
+                backgroundPosition: `-${mousePosition.x}px -${mousePosition.y}px`,
+              }}
+            ></div>
+          )}
+        </div>
       </div>
-    </div>
+      <div className="gamecard__cards-container">
+        {words.map((words, index) => (
+          <div
+            key={index}
+            className={`gamecard__card ${
+              flippedStates[index] ? "flipped" : ""
+            }`}
+            onClick={() => handleFlip(index)}
+          >
+            <div className="gamecard__card-inner">
+              <div className="gamecard__front">{words.front}</div>
+              <div className="gamecard__back">{words.back}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
   );
 }
 
