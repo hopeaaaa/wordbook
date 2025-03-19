@@ -38,6 +38,8 @@ Primary Users:
 
 | Endpoint                         | Method | Description                            |
 |-----------------------------------|--------|----------------------------------------|
+| /api/translation                 | GET    | Get a new translation                  |
+| /api/pronunciation               | GET    | Get a new pronunciation                |
 | /api/user/:userId                | GET    | Get user profile and save translations |
 | /api/user/save                   | POST   | Save a new translation                 |
 | /api/user/update                 | PUT    | Update an existing translation         |
@@ -48,9 +50,7 @@ GET /users/:id
 
 * Fetch details for a specific user.
 {
-  "id": 1,
-  "name": "Jane Doe",
-  "email": "jane.doe@example.com",
+  "text": "apple"
 }
 
 
