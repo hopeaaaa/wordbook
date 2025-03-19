@@ -35,7 +35,14 @@ Primary Users:
 * POST /translate – Accepts text input, returns translation.
 * POST /get-pronunciation - Accepts text input, returns audio of French pronunciation.
 * POST /user/preferences – Saves user's preferences.
-* GET /user/saved – Fetches user’s saved translations.
+
+| Endpoint                          | Method | Description                            |
+| ----------------------------------|:------:|---------------------------------------:|
+| /api/user/:userId                 | GET    | Get user profile and save translations |
+| /api/user/save                    | POST   | Save a new translation                 |
+| /api/user/update                  | PUT    | Update an existing translation         |
+| /api/user/delete/:translationId   | DELETE | Delete a saved translation             |
+
 
 GET /users/:id
 
