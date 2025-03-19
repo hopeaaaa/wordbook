@@ -11,6 +11,7 @@
     background-position: right 10px center;
     background-repeat: no-repeat;
     border-radius: 0.25rem;
+    padding: 1rem;
 
     &:focus,
     &:focus-visible {
@@ -19,10 +20,10 @@
     }
   }
 
-  &__searchbtn {
+  /*  &__searchbtn {
     background-color: yellow;
     border-radius: 1rem;
-  }
+  } */
 
   &__search-error {
     color: white;
@@ -36,13 +37,17 @@
   &__fetchedtitle {
     color: white;
   }
-
-  &__soundbtn {
+  &__searchbtn,
+  &__soundbtn,
+  &__addbtn,
+  &__clearbtn,
+  &__removebtn {
     background-color: yellow;
     border-radius: 1rem;
+    padding: 0.5rem;
   }
 
-  &__addbtn {
+  /* &__addbtn {
     background-color: yellow;
     border-radius: 1rem;
   }
@@ -55,7 +60,7 @@
   &__removebtn {
     background-color: yellow;
     border-radius: 1rem;
-  }
+  } */
 
   &__btn-container {
     display: flex;

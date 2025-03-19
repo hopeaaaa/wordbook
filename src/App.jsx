@@ -9,8 +9,8 @@ function App() {
     <BrowserRouter>
       <Header />
       <Routes>
-        <Route path="/" element={<TranslatorPage />} />
-        <Route path="/game" element={<GamePage />} />
+        <Route path="/" element={<GamePage />} />
+        <Route path="/translator" element={<TranslatorPage />} />
       </Routes>
       {/*       <Footer /> */}
     </BrowserRouter>

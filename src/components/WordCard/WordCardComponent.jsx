@@ -39,6 +39,7 @@ function WordCardComponent() {
       setError(null);
 
       //fetch pronunciation
+      console.log("translatedText before fetch:", translatedText);
       fetchPronunciation(translatedText);
     } catch (error) {
       console.error("Error fetching translation:", error);
@@ -49,13 +50,22 @@ function WordCardComponent() {
 
   //fetch pronunciation url
   const fetchPronunciation = async (text) => {
+    /*   if (!text || typeof text !== "string") {
+      console.error("Invalid text provided:", text);
+      return;
+    } */
+
+    const word = Array.isArray(text) ? text[0] : text;
+    console.log("Fetching pronunciation for:", text);
+
     try {
       const response = await fetch("http://localhost:5000/get-pronunciation", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ text }),
+        /* body: JSON.stringify({ text: text.trim() }), */
+        body: JSON.stringify({ text: word }),
       });
 
       if (!response.ok) {
@@ -64,7 +74,9 @@ function WordCardComponent() {
       }
 
       const data = await response.json();
-      setAudioUrl(`http://localhost:5000${data.audioUrl}`);
+      console.log("data:", data);
+
+      setAudioUrl(data.audioUrl);
     } catch (error) {
       console.error("Error fetching pronunciation:", error);
       setAudioUrl(null);
@@ -73,7 +85,12 @@ function WordCardComponent() {
 
   // play audio when button is clicked
   const playAudio = () => {
-    if (!audioUrl) return;
+    if (!audioUrl) {
+      console.error("no audio URL found");
+      return;
+    }
+
+    console.log("playing audio from URL:", audioUrl);
     const audio = new Audio(audioUrl);
     audio.play().catch((error) => console.error("Error playing audio:", error));
   };
@@ -131,24 +148,27 @@ function WordCardComponent() {
           </div>
         </>
       )}
-      <div className="wordcard__added-words">
+      <p className="wordcard__wordlist-title">Your Word List</p>
+      <hr />
+      <div className="wordcard__added-words-container">
         {console.log(addedWords)}
         {addedWords.length === 0 ? (
-          <p className="wordcard__prompt">Add words!</p>
+          <p className="wordcard__add-words-prompt">Add words!</p>
         ) : (
           <div className="wordcard__fetched-card">
             {addedWords.map((wordData, index) => (
               <div className="wordcard__fetched-content" key={index}>
-                <strong className="wordcard__fetched-title">
-                  {wordData.english}
-                </strong>{" "}
-                / {wordData.french}
                 <button
                   className="wordcard__removebtn"
                   onClick={() => removeWord(index)}
                 >
                   -
-                </button>
+                </button>{" "}
+                <br />
+                <strong className="wordcard__fetched-title">
+                  {wordData.french}
+                </strong>{" "}
+                / {wordData.english}
               </div>
             ))}
           </div>
