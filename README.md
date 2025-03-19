@@ -7,35 +7,46 @@ Wordbook is a full-stack web application and hidden objects game for playful, ca
 Hidden objects games are games where users have to search for items hidden within a busy or cluttered scene. 
 
 ### Problem / Opportunity
-This app provides users a simple and engaging way to expand their vocabulary in a foreign language, addressing the challenge of word retention and efficiency.
+This app provides users an engaging way to expand their vocabulary in a foreign language while playing a game, addressing the challenge of word retention and applying vocabulary in context.
 
 ### User Profile
 Primary Users:
+* Casual gaming enthusiast
 * Language learning enthusiasts
-* Adults with a basic knowledge of French
+* With basic knowledge of French
+
 
 ### Features
-
-* As a user, I want to be able to scan an ingredient list via image upload or text input.
-* As a user, I want AI to categorize ingredients as Beneficial, Potential Irritants, or Harmful.
-* As a user, I want to receive personalized ingredient analysis based on my skin type.
-* As a user, I want AI to recommend safer product alternatives.
-* As a user, I want access to an ingredient glossary to learn about skincare ingredients.
-* As a user, I want to save products and ingredients for future reference.
-* As a user, I want an intuitive and user-friendly interface.
+* Hidden Objects Game / Gamified Language Learning
+* Magnifying glass to see details
+* Language Cards
+* French to English Translator
+* Saved Translations Wordlist
+  
 
 ### Tech Stack
-* Frontend: React.js, SCSS for styling
-* Backend: Node.js, Express.js, MySQL (using Workbench for database management)
+* Frontend: React.js, Axios, Sass
+* Backend: Node.js, Express.js, Knex, MySQL (using Workbench for database management)
 * APIs: Google Translate, Google Speech to Text, Google Vision
 
 ### Sitemap
 
 ### API Endpoints 
-* POST /translate – Accepts image/text input, returns translation.
-* POST /pronunciation - Accepts text input, returns audio of French pronunciation.
+* POST /translate – Accepts text input, returns translation.
+* POST /get-pronunciation - Accepts text input, returns audio of French pronunciation.
 * POST /user/preferences – Saves user's preferences.
 * GET /user/saved – Fetches user’s saved translations.
+
+GET /users/:id
+
+* Fetch details for a specific user.
+{
+  "id": 1,
+  "name": "Jane Doe",
+  "email": "jane.doe@example.com",
+}
+
+
 
 ### Roadmap
 1.	Set up backend (MySQL), initialize the database schema.
@@ -51,6 +62,7 @@ Primary Users:
 
 ### Future Implementations
 Sound, animations
+Levels, stories, homonyms
 
 ### Repos:
 https://github.com/hopeaaaa/wordbook-API
