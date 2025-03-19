@@ -36,7 +36,7 @@ Primary Users:
 * POST /get-pronunciation - Accepts text input, returns audio of French pronunciation.
 * POST /user/preferences – Saves user's preferences.
 
-| Endpoint                          | Method | Description                            |
+|Endpoint                          |Method |Description                            |
 | ----------------------------------|:------:|---------------------------------------:|
 | /api/user/:userId                 | GET    | Get user profile and save translations |
 | /api/user/save                    | POST   | Save a new translation                 |
