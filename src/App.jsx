@@ -12,7 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<GamePage />} />
         <Route path="/translator" element={<TranslatorPage />} />
-        <Route path="/user-profile" element={<UserProfilePage />} />
+        <Route path="/user-profile/:userId" element={<UserProfilePage />} />
       </Routes>
       {/*       <Footer /> */}
     </BrowserRouter>
