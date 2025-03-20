@@ -16,12 +16,8 @@ function WordCardComponent() {
     if (!word) return;
 
     try {
-      const response = await fetch(URL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ text: word, targetLang: "fr" }),
+      const response = await fetch(`${URL}?text=${word}&targetLang=fr`, {
+        method: "GET",
       });
 
       const result = await response.json();
@@ -50,23 +46,16 @@ function WordCardComponent() {
 
   //fetch pronunciation url
   const fetchPronunciation = async (text) => {
-    /*   if (!text || typeof text !== "string") {
-      console.error("Invalid text provided:", text);
-      return;
-    } */
-
     const word = Array.isArray(text) ? text[0] : text;
     console.log("Fetching pronunciation for:", text);
 
     try {
-      const response = await fetch("http://localhost:5000/get-pronunciation", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        /* body: JSON.stringify({ text: text.trim() }), */
-        body: JSON.stringify({ text: word }),
-      });
+      const response = await fetch(
+        `http://localhost:5000/pronunciation?text=${word}`,
+        {
+          method: "GET",
+        }
+      );
 
       if (!response.ok) {
         const errorData = await response.json();

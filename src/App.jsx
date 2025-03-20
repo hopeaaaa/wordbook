@@ -3,6 +3,7 @@ import "./App.scss";
 import Header from "./components/Header/Header";
 import TranslatorPage from "../src/pages/TranslatorPage/TranslatorPage";
 import GamePage from "./pages/GamePage/GamePage";
+import UserProfilePage from "./pages/UserProfilePage/UserProfilePage";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<GamePage />} />
         <Route path="/translator" element={<TranslatorPage />} />
+        <Route path="/user-profile" element={<UserProfilePage />} />
       </Routes>
       {/*       <Footer /> */}
     </BrowserRouter>
