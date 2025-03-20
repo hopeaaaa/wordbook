@@ -1,6 +1,9 @@
+import { useNavigate } from "react-router-dom";
 import "../GameStartModal/GameStartModal.scss";
 
 function GameStartModal({ onClose }) {
+  const navigate = useNavigate();
+
   return (
     <div className="gamestart__overlay">
       <div className="gamestart">
@@ -13,7 +16,10 @@ function GameStartModal({ onClose }) {
           lists of words and meanings or other related information.
         </p>
         <button className="gamestartmodal__how-to-btn">How to play</button>
-        <button className="gamestartmodal__translator-btn">
+        <button
+          className="gamestartmodal__translator-btn"
+          onClick={() => navigate("/translator")}
+        >
           Translator Tool
         </button>
       </div>

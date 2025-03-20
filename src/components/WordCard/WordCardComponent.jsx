@@ -1,5 +1,6 @@
 import "./WordCardComponent.scss";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function WordCardComponent() {
   const [word, setWord] = useState("");
@@ -10,6 +11,7 @@ function WordCardComponent() {
   const [savedWord, setSavedWord] = useState("");
 
   const URL = "http://localhost:5000/translate";
+  const navigate = useNavigate();
 
   //fetch translation
   const fetchTranslation = async () => {
@@ -89,7 +91,7 @@ function WordCardComponent() {
     if (savedWord && translatedWord) {
       const newWord = { english: savedWord, french: translatedWord };
       setAddedWords((prevWords) => {
-        const updatedWords = [...prevWords, newWord];
+        const updatedWords = [newWord, ...prevWords];
         return updatedWords;
       });
       setSavedWord("");
@@ -113,6 +115,12 @@ function WordCardComponent() {
       />
       <button className="wordcard__searchbtn" onClick={fetchTranslation}>
         translate
+      </button>
+      <button
+        className="wordcard__user-profile-btn"
+        onClick={() => navigate("/users")}
+      >
+        User Profiles
       </button>
       {error && <p className="wordcard__search-error">{error}</p>}
 
