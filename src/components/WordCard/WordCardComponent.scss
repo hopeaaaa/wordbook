@@ -114,12 +114,6 @@ button {
   }
 
   &__fetched-title-container {
-    /*     display: flex;
-    flex-direction: column;
-    position: relative;
-    align-items: flex-start;
-    gap: 2rem; */
-    /*  border: solid; */
     padding-bottom: 2rem;
   }
 
@@ -128,6 +122,7 @@ button {
     padding-top: 1rem;
     display: flex;
     justify-content: space-between;
+    width: 400px;
   }
 
   &__removebtn {
@@ -180,13 +175,4 @@ button {
     display: flex;
     gap: 2rem;
   }
-
-  //fetched list
-  /*   &__fetched-content {
-    border: solid;
-    margin: 1rem 0;
-    border-radius: 1rem;
-    width: max-content;
-    padding: 2rem;
-  } */
 }

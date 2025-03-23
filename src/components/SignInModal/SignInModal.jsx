@@ -7,43 +7,40 @@ function SignInModal({ onClose }) {
   return (
     <div className="signin__overlay">
       <div className="signin__content-container">
-        <div className="signin__header">
-          <button className="signin__closebtn" onClick={onClose}>
-            x
-          </button>
+        <button className="signin__closebtn" onClick={onClose}>
+          x
+        </button>
+        <div className="signin__form-div">
+          <div className="signin__title">Sign Up / Log In</div>
+          <form action="" className="signin__form">
+            <input
+              type="text"
+              placeholder="Username"
+              className="signin__username-input"
+            />
+            <input
+              type="email"
+              placeholder="Email"
+              className="signin__email-input"
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              className="signin__password-input"
+            />
+            <button
+              className="signin__btn"
+              onClick={() => navigate("/translator/users/1")}
+            >
+              Log In
+            </button>
+            <p className="signin__forgot-btn">Forgot Password?</p>
+            <hr />
+            <p className="signin__create-btn">
+              Don't have an account? Create one
+            </p>
+          </form>
         </div>
-        <div className="signin__title">Sign Up / Log In</div>
-        <form action="" className="signin__form">
-          <input
-            type="text"
-            placeholder="Username"
-            className="signin__username-input"
-          />
-          <button className="signin__btn">Enter</button>
-          <input
-            type="email"
-            placeholder="Email"
-            className="signin__email-input"
-          />
-          <button className="signin__btn">Enter</button>
-          <input
-            type="password"
-            placeholder="Password"
-            className="signin__password-input"
-          />
-          <button
-            className="signin__e-btn"
-            onClick={() => navigate("/translator/users/1")}
-          >
-            Sign Up
-          </button>
-          <button
-            className="signin__e-btn"
-            onClick={() => navigate("/translator/users/1")}
-          >
-            Log In
-          </button>
-        </form>
       </div>
     </div>
   );
