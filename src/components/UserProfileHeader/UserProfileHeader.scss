@@ -1,0 +1,14 @@
+.userprofile {
+  &__container {
+    display: flex;
+  }
+
+  &__user-name-title {
+    padding: 1rem 0 1rem 2rem; //trbl
+  }
+}
+
+.vl {
+  border-left: 1px solid black;
+  height: 100px;
+}

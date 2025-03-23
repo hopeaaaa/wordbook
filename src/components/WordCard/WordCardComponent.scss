@@ -1,79 +1,180 @@
-/* * {
-  background-color: aqua;
-} */
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/resets" as *;
+
+.vl {
+  border-left: 1px solid black;
+  min-height: 100%;
+  flex-shrink: 0;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
 
 .wordcard {
-  background-color: green;
-  padding: 2rem;
+  &__title {
+    width: 260px;
+    padding: 1rem 1rem 1rem 2rem; //trbl
+    margin-bottom: 8rem;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+  }
+
+  &__parent-container {
+    display: flex;
+  }
+
+  &__search-container {
+    display: flex;
+    gap: 1rem;
+    padding-left: 2rem;
+    padding-top: 10rem;
+  }
 
   &__search-input {
-    background-image: url("../../assets/icons/search-24px.svg");
+    /*     background-image: url("../../assets/icons/noun-edit.svg");
     background-position: right 10px center;
-    background-repeat: no-repeat;
-    border-radius: 0.25rem;
-    padding: 1rem;
+    background-repeat: no-repeat; */
+    padding: 0.5rem 0.5rem 0.5rem 1rem; //trbl
+    width: 500px;
+    font-size: 1.8rem;
+    border: solid 1px;
 
     &:focus,
     &:focus-visible {
-      border: 1px solid;
+      /*    border: 1px solid yellow; */
       outline: none;
     }
   }
 
-  /*  &__searchbtn {
-    background-color: yellow;
-    border-radius: 1rem;
-  } */
+  &__searchbtn,
+  &__clearbtn {
+    /*     background-color: yellow; */
+    border: 1px solid;
+    padding: 1rem; //trbl
+  }
 
   &__search-error {
     color: white;
   }
 
-  &__prompt {
-    font-style: italic;
-    color: white;
+  &__wrapper {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 4rem 2rem 0 2rem; //trbl
+    /*     position: absolute; */
+    align-items: flex-start;
+    gap: 4rem;
+  }
+
+  &__added-words-container {
+    width: 250px;
+    min-height: 200px;
+    flex-shrink: 0;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+  }
+
+  &__wordlist-title {
+    padding-bottom: 1rem;
+    position: relative;
+    text-align: center;
+
+    //underline
+    /*     &::after {
+      content: "";
+      display: block;
+      width: 50%;
+      height: 1px;
+      background-color: black;
+      margin: 0.3rem auto 0;
+    } */
+  }
+
+  &__soundbtn {
+    margin-left: 17rem;
   }
 
   &__fetchedtitle {
-    color: white;
+    color: $green;
+    font-size: 4rem;
   }
-  &__searchbtn,
-  &__soundbtn,
-  &__addbtn,
-  &__clearbtn,
+
+  &__fetched-title-container {
+    /*     display: flex;
+    flex-direction: column;
+    position: relative;
+    align-items: flex-start;
+    gap: 2rem; */
+    /*  border: solid; */
+    padding-bottom: 2rem;
+  }
+
+  &__fetched-content {
+    padding-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+  }
+
   &__removebtn {
-    background-color: yellow;
-    border-radius: 1rem;
+    font-size: 0.5rem;
+    border: 1px solid;
     padding: 0.5rem;
+    margin-left: 2rem;
   }
 
-  /* &__addbtn {
-    background-color: yellow;
-    border-radius: 1rem;
+  &__soundbtn {
+    width: fit-content;
+    border: solid 1px;
+    padding: 1rem;
   }
 
-  &__clearbtn {
-    background-color: yellow;
-    border-radius: 1rem;
-  }
-
-  &__removebtn {
-    background-color: yellow;
-    border-radius: 1rem;
+  /*   &__addbtn {
+    border: 1px solid;
+    font-size: 12px;
+    padding: 0.5rem;
+    width: fit-content;
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
   } */
+
+  &__addbtn {
+    border: 1px solid;
+    padding: 0.5rem;
+    cursor: pointer;
+    height: 3.5rem;
+    padding: 1rem;
+  }
+
+  &__btn-div {
+    padding-top: 8rem;
+  }
 
   &__btn-container {
     display: flex;
+    flex-direction: column;
     width: 500px;
     margin-bottom: 2rem;
   }
 
+  &__btn-edit-container {
+    padding-top: 2rem;
+    display: flex;
+    gap: 2rem;
+  }
+
   //fetched list
-  &__fetched-content {
+  /*   &__fetched-content {
     border: solid;
     margin: 1rem 0;
     border-radius: 1rem;
     width: max-content;
     padding: 2rem;
-  }
+  } */
 }

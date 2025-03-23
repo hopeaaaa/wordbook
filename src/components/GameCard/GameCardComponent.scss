@@ -1,66 +1,45 @@
 .gamecard {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  width: 100%;
-  /*  padding: 2rem; */
-
-  &__intro {
-    color: white;
-  }
-
-  /*   &__help-btn {
-    border: solid;
-    border-radius: 1rem;
-    width: fit-content;
-    padding: 1rem;
-  } */
-
-  &__audio-controls {
+  &__settings-container {
     display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  &__audioplayer {
-    margin: 2rem;
-    border: solid;
+    flex-direction: column;
+    width: 100px;
+    gap: 2rem;
+    margin-top: 12rem;
+    padding-left: 2rem;
   }
 
   &__help-btn,
-  &__volume-btn {
-    background: none;
-    border: none;
-    color: white;
+  &__volume-btn,
+  &__translator-tool-btn {
     font-size: 1.5rem;
     cursor: pointer;
-    padding: 0.5rem;
-    transition: color 0.3s;
+    padding: 1rem;
+    background: white;
     border: solid black 1px;
     border-radius: 1rem;
+    width: fit-content;
+  }
 
-    :hover {
-      color: #ccc;
-    }
+  &__upper-container {
+    display: flex;
+    padding: 0 2rem 2rem 5rem; //trbl
   }
 
   &__magnifyingglass {
     position: absolute;
-    width: 150px;
-    height: 150px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
     border: 1px solid black;
-    background-size: 1000%;
+    background-size: 1976px auto;
     background-repeat: no-repeat;
+    background-image: url("../../assets/images/kitchensg.svg");
     pointer-events: none;
     transform: translate(-50%, -50%);
   }
 
   &__img-container {
-    width: fit-content;
-    height: 100%;
+    width: 988px;
     overflow: visible;
     cursor: none;
     position: relative;
@@ -69,13 +48,51 @@
   &__img {
     max-width: 100%;
     max-height: 100%;
-    /*    cursor: grab; */
-    /*    transition: transform 0.2s ease-out; */
+    position: relative;
+  }
+
+  &__clickable-areas-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .clickable-area {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    /* background-color: rgba(255, 255, 255, 0.2); */
+    border-radius: 50%;
+    overflow: hidden;
+    z-index: 10;
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: rgba(255, 255, 255, 0.4);
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      opacity: 0;
+      transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+    }
+
+    &.clicked::after {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+    }
   }
 
   &__cards-container {
     display: flex;
     width: 1000px;
+    justify-content: center;
+    margin-left: 6rem;
   }
 
   &__card {
@@ -111,7 +128,6 @@
     font-size: 1.5rem;
     font-weight: bold;
     border: 1px solid #000;
-    /*  background: white; */
     border-radius: 1rem;
   }
 

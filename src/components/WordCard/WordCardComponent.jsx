@@ -106,70 +106,90 @@ function WordCardComponent() {
 
   return (
     <section className="wordcard">
-      <input
-        type="text"
-        placeholder="enter a word..."
-        value={word}
-        onChange={(e) => setWord(e.target.value)}
-        className="wordcard__search-input"
-      />
-      <button className="wordcard__searchbtn" onClick={fetchTranslation}>
-        translate
-      </button>
-      <button
-        className="wordcard__user-profile-btn"
-        onClick={() => navigate("/users")}
-      >
-        User Profiles
-      </button>
-      {error && <p className="wordcard__search-error">{error}</p>}
-
-      {translatedWord && (
-        <>
-          <h2 className="wordcard__fetchedtitle">{translatedWord}</h2>
-          <div className="wordcard__btn-container">
-            {audioUrl && (
-              <button className="wordcard__soundbtn" onClick={playAudio}>
-                🔊 Pronunciation
-              </button>
-            )}
-            <button className="wordcard__addbtn" onClick={addWord}>
-              +
-            </button>
-            <button
-              className="wordcard__clearbtn"
-              onClick={() => setTranslatedWord(null)}
-            >
-              clear
-            </button>
-          </div>
-        </>
-      )}
-      <p className="wordcard__wordlist-title">Your Word List</p>
       <hr />
-      <div className="wordcard__added-words-container">
-        {console.log(addedWords)}
-        {addedWords.length === 0 ? (
-          <p className="wordcard__add-words-prompt">Add words!</p>
-        ) : (
-          <div className="wordcard__fetched-card">
-            {addedWords.map((wordData, index) => (
-              <div className="wordcard__fetched-content" key={index}>
-                <button
-                  className="wordcard__removebtn"
-                  onClick={() => removeWord(index)}
-                >
-                  -
-                </button>{" "}
-                <br />
-                <strong className="wordcard__fetched-title">
-                  {wordData.french}
-                </strong>{" "}
-                / {wordData.english}
-              </div>
-            ))}
+      <h3 className="wordcard__title">Translator Tool</h3>
+      <div className="wordcard__parent-container">
+        <div className="wordcard__search-container">
+          <div className="wordcard-input-div">
+            <div className="wordcard__fetched-container">
+              {error && <p className="wordcard__search-error">{error}</p>}
+
+              {translatedWord && (
+                <div className="wordcard__fetched-title-container">
+                  {audioUrl && (
+                    <button className="wordcard__soundbtn" onClick={playAudio}>
+                      🔊
+                    </button>
+                  )}
+                  <h2 className="wordcard__fetchedtitle">{translatedWord}</h2>
+                </div>
+              )}
+            </div>
+            <input
+              type="text"
+              placeholder="enter a word..."
+              value={word}
+              onChange={(e) => setWord(e.target.value)}
+              className="wordcard__search-input"
+            />
           </div>
-        )}
+          <div className="wordcard__btn-div">
+            <button className="wordcard__searchbtn" onClick={fetchTranslation}>
+              Translate
+            </button>
+            <div className="wordcard__btn-container">
+              <div className="wordcard__btn-edit-container">
+                <button className="wordcard__addbtn" onClick={addWord}>
+                  Add to Word List
+                </button>
+                <button
+                  className="wordcard__clearbtn"
+                  onClick={() => setTranslatedWord(null)}
+                >
+                  Clear
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="wordcard__wrapper">
+          <div className="vl"></div>
+
+          <div className="wordcard__added-words-container">
+            <p className="wordcard__wordlist-title"> Word List</p>
+
+            {addedWords.length === 0 ? (
+              <p className="wordcard__add-words-prompt">
+                <i>{/* Add words here! */}</i>
+              </p>
+            ) : (
+              <div className="wordcard__list-container">
+                {addedWords.map((wordData, index) => (
+                  <>
+                    <div className="wordcard__fetched-content" key={index}>
+                      <div className="wordcard__fetched-div">
+                        <strong className="wordcard__fetched-title">
+                          {wordData.french}
+                        </strong>{" "}
+                        / {wordData.english}
+                      </div>
+                      <div className="wordcard__fetched-btn-div">
+                        <button
+                          className="wordcard__removebtn"
+                          onClick={() => removeWord(index)}
+                        >
+                          Remove from List
+                        </button>
+                      </div>
+                    </div>
+                    <hr />
+                  </>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
       </div>
     </section>
   );

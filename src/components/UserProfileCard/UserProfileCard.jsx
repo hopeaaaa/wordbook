@@ -12,6 +12,7 @@ function UserProfileCard({ userData }) {
   return (
     <section className="userprofile__section">
       <h3 className="userprofile__header">Saved Translations</h3>
+      <button className="userprofile__edit-list-btn">Add to List</button>
       <ul className="userprofile__list">
         {userData?.map((translations, index) => {
           return (
@@ -19,6 +20,7 @@ function UserProfileCard({ userData }) {
               <div>{translations.fr_word}</div>
               <div>{translations.en_word}</div>
               <audio controls src={`${URL}${translations.audio_url}`}></audio>
+              <button>remove</button>
             </li>
           );
         })}
