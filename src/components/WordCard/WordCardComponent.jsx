@@ -2,7 +2,7 @@ import "./WordCardComponent.scss";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function WordCardComponent() {
+function WordCardComponent({ onSignInClick }) {
   const [word, setWord] = useState("");
   const [translatedWord, setTranslatedWord] = useState(null);
   const [error, setError] = useState(null);
@@ -110,7 +110,7 @@ function WordCardComponent() {
       <h3 className="wordcard__title">Translator Tool</h3>
       <div className="wordcard__parent-container">
         <div className="wordcard__search-container">
-          <div className="wordcard-input-div">
+          <div className="wordcard__input-div">
             <div className="wordcard__fetched-container">
               {error && <p className="wordcard__search-error">{error}</p>}
 
@@ -179,13 +179,14 @@ function WordCardComponent() {
                           className="wordcard__removebtn"
                           onClick={() => removeWord(index)}
                         >
-                          Remove from List
+                          Remove from Word List
                         </button>
                       </div>
                     </div>
                     <hr />
                   </>
                 ))}
+                <button onClick={onSignInClick}>Save List / Log in </button>
               </div>
             )}
           </div>

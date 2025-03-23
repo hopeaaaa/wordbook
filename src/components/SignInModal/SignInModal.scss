@@ -1,0 +1,39 @@
+.signin {
+  &__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+
+  &__content-container {
+    background: #fdf6e3;
+    border-radius: 8px;
+    width: 50rem;
+    position: relative;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+    border: solid 2px;
+  }
+
+  &__closebtn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: black;
+    cursor: pointer;
+    align-self: flex-end;
+    padding: 0.5rem 1rem 0 0; //trbl
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+}

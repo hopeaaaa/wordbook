@@ -91,7 +91,7 @@ function GameCardComponent({ onHelpClick }) {
   return (
     <section className="gamecard">
       <hr />
-      <h3 className="wordcard__title">Game </h3>
+      <h3 className="wordcard__title">Hidden Objects Game </h3>
 
       <div className="gamecard__upper-container">
         <div

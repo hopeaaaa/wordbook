@@ -30,7 +30,8 @@ function GameStartModal({ onClose }) {
           <button className="gamestart__play-btn" onClick={onClose}>
             Play
           </button>
-          <div className="vl"></div>
+          <hr />
+
           <button
             className="gamestart__how-to-btn"
             onClick={() => setShowInstructions(!showInstructions)}
@@ -40,7 +41,6 @@ function GameStartModal({ onClose }) {
           {showInstructions && (
             <div className="gamestart__instructions">
               <div className="gamestart__howtoplay-container">
-                <p className="gamestart__credits-title">How to Play</p>
                 <ol className="gamestart__instructions-list">
                   <li className="gamestart__list-item">
                     Find the Objects – Look closely at the illustration to spot
@@ -61,19 +61,23 @@ function GameStartModal({ onClose }) {
                 <p>Have fun and test your French vocabulary!</p>
               </div>
               <div className="gamestart__credits-container">
-                <p className="gamestart__credits-title">Credits</p>
-                <p className="gamestart__credits-title">
-                  Concept, Design and Code
+                <p className="gamestart__credits-item">Credits</p>
+                <p className="gamestart__credits-item">
+                  Concept, Design and Code // Hope Akello
                 </p>
-                <p>Hope Akello</p>
-                <p className="gamestart__credits-title">Illustrations</p>
-                <p>Hope Akello and Taj Jamal</p>
-                <p className="gamestart__credits-title">Music</p>
-                <p>Jesse Gallagher and Trevor Garrod, Youtube Audio Library</p>
+                <p className="gamestart__credits-item">
+                  Illustrations // Hope Akello and Taj Jamal{" "}
+                  <i> (Thanks Taj!)</i>
+                </p>
+                <p className="gamestart__credits-item">
+                  Music // Jesse Gallagher and Trevor Garrod, Youtube Audio
+                  Library
+                </p>
               </div>
             </div>
           )}
-          <div className="vl"></div>
+          <hr />
+
           <button
             className="gamestart__translator-btn"
             onClick={() => navigate("/translator")}
