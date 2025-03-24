@@ -19,9 +19,10 @@ Primary Users:
 ### Features
 * Hidden Objects Game / Gamified Language Learning
 * Magnifying glass to see details
-* Language Cards
+* Sound Effects and Animations
+* Vocabulary Cards
 * French to English Translator
-* Saved Translations Wordlist
+* Save Translations
   
 
 ### Tech Stack
@@ -30,46 +31,39 @@ Primary Users:
 * APIs: Google Translate, Google Speech to Text, Google Vision
 
 ### Sitemap
+![wordbook-sitemap](https://github.com/user-attachments/assets/9a486486-e3c8-4f04-95f5-3413c8ffbe8f)
+
 
 ### API Endpoints 
-* POST /translate – Accepts text input, returns translation.
-* POST /get-pronunciation - Accepts text input, returns audio of French pronunciation.
-* POST /user/preferences – Saves user's preferences.
-
 | Endpoint                         | Method | Description                            |
-|-----------------------------------|--------|----------------------------------------|
+|----------------------------------|--------|----------------------------------------|
 | /api/translation                 | GET    | Get a new translation                  |
 | /api/pronunciation               | GET    | Get a new pronunciation                |
 | /api/user/:userId                | GET    | Get user profile and save translations |
-| /api/user/save                   | POST   | Save a new translation                 |
-| /api/user/update                 | PUT    | Update an existing translation         |
+| /api/user/save                   | POST   | Add and save a new translation         |
+| /api/user/update                 | PUT    | Update an existing saved translation   |
 | /api/user/delete/:translationId  | DELETE | Delete a saved translation             |
 
-
-GET /users/:id
-
-* Fetch details for a specific user.
-{
-  "text": "apple"
-}
+![wordbook-schema](https://github.com/user-attachments/assets/b4b01d1b-f00e-4082-9780-e2e67739b1a4)
 
 
 
 ### Roadmap
-1.	Set up backend (MySQL), initialize the database schema.
-2.	Implement AI-Powered Ingredient Breakdown – Integrate Google Cloud Vision API.
-3.	Implement NLP categorization for ingredient analysis and match extracted ingredients to database records.
-4.	Develop database structure and populate ingredient database (harmful, beneficial, and neutral ingredients).
-5.	Build frontend (React) and design the main UI components.
-6.	Implement API endpoints to support ingredient breakdown and integrate backend with frontend.
-7.	Develop Personalized Skin Type Analysis – User quiz and preference storage.
-8.	Implement Better Product Alternatives Finder – Fetch alternative product suggestions based on ingredient analysis.
-9.	Develop Smart Ingredient Glossary – Create search & learn functionality for ingredient definitions.
-10.	Final UI/UX polish, bug fixes, full app testing, and deployment.
+1.  Begin illustrating the setting/designing the game.
+2.  Find tutorials for translation and game web apps built with React
+3. 	Set up backend (MySQL), initialize the database schema.
+4. 	Determine game mechanics.
+5. 	Build frontend (React) and design the main UI components.
+6. 	Implement API endpoints
+7. 	Develop functionality
+8. 	Final UI/UX polish, bug fixes, full app testing, and deployment.
+
 
 ### Future Implementations
-Sound, animations
-Levels, stories, homonyms
+* Sound, animations
+* Levels, stories, homonyms
+* Image recognition 
 
 ### Repos:
-https://github.com/hopeaaaa/wordbook-API
+* https://github.com/hopeaaaa/wordbook/
+* https://github.com/hopeaaaa/wordbook-API
