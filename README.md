@@ -7,7 +7,7 @@ Wordbook is a full-stack web application and hidden objects game for playful, ca
 Hidden objects games are games where users have to search for items hidden within a busy or cluttered scene. 
 
 ### Problem / Opportunity
-This app provides an engaging way for users to expand their vocabulary in foreign languages through immersive gameplay. By gamifying the experience, it enhances word retention and reinforces vocabulary in real-world contexts.
+This app provides an engaging way for users to expand their vocabulary in foreign languages through immersive gameplay. By gamifying the experience, Wordbook enhances word retention and reinforces vocabulary in real-world contexts.
 
 ### User Profile
 Primary Users:
