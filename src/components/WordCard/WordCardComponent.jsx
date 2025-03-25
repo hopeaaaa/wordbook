@@ -10,7 +10,7 @@ function WordCardComponent({ onSignInClick }) {
   const [audioUrl, setAudioUrl] = useState(null);
   const [savedWord, setSavedWord] = useState("");
 
-  const URL = "http://localhost:5000/translate";
+  const URL = "https://wordbook-m6md.onrender.com/translate";
   const navigate = useNavigate();
 
   //fetch translation

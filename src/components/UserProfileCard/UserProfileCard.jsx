@@ -1,7 +1,7 @@
 import "./UserProfileCard.scss";
 
 function UserProfileCard({ userData }) {
-  const URL = "http://localhost:5000";
+  const URL = "https://wordbook-m6md.onrender.com";
 
   console.log("user data", userData);
 
