@@ -17,13 +17,15 @@ hr {
 }
 
 .gamestart {
+  /*   font-family: "Montserrat", sans-serif !important; */
+
   &__overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.641);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -31,11 +33,10 @@ hr {
   }
 
   &__content-container {
-    background: #fdf6e3;
+    background: #f2fbe0;
     border-radius: 8px;
     width: 50rem;
     position: relative;
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
     border: solid 2px;
   }
 
@@ -57,16 +58,17 @@ hr {
   }
 
   &__intro-title {
-    font-size: 1.5;
-    padding: 0 0 1rem 2rem; //trbl
+    font-size: 3rem;
+    font-weight: bold;
+    padding: 0 0 0 2rem; //trbl
   }
 
   &__introduction {
-    /*    font-family: "Courier New", monospace; */
-    font-size: 1rem;
     color: #444;
-    font-weight: bold;
-    padding: 0 0 2rem 2rem;
+    font-weight: 500;
+    padding: 0 3rem 2rem 2.5rem;
+    font-size: 1.3rem;
+    line-height: 1.8rem;
   }
 
   &__lines {
@@ -84,25 +86,33 @@ hr {
   &__play-btn {
     text-align: left;
     padding: 3rem 2rem 2rem 2rem;
+    font-weight: bold;
   }
 
   &__how-to-btn {
     text-align: left;
     padding: 2rem;
+    font-weight: bold;
   }
 
   &__translator-btn {
     text-align: left;
     padding: 2rem 2rem 3rem 2rem; //trbl
+    font-weight: bold;
   }
 
   &__instructions {
-    padding-left: 2rem;
-    background: #fdf6e3;
+    padding-left: 3.2rem;
+    padding-right: 2rem;
+    background: #f2fbe0;
     border-radius: 5px;
-    /*     font-family: "Courier New", monospace; */
     text-align: left;
+    font-weight: 500;
   }
+
+  /*   &__credits-container {
+    border: solid;
+  } */
 
   &__instructions-list {
     list-style-type: decimal;

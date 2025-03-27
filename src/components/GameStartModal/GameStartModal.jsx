@@ -58,7 +58,6 @@ function GameStartModal({ onClose }) {
                     Find all the hidden objects to win!
                   </li>
                 </ol>
-                <p>Have fun and test your French vocabulary!</p>
               </div>
               <div className="gamestart__credits-container">
                 <p className="gamestart__credits-item">Credits</p>

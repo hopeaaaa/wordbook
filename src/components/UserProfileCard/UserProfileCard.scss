@@ -1,0 +1,113 @@
+.userprofile {
+  display: flex;
+  flex-direction: column;
+  /*   justify-content: center;
+  align-items: center; */
+  height: 100vh;
+
+  &__subheader {
+    padding-left: 2rem;
+  }
+
+  &__profilepic {
+    margin: 0 auto;
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+  }
+
+  &__container {
+    width: 800px;
+    padding: 20px;
+    background: white;
+    border: 2px solid black;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 6px 6px 0px black;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    margin-top: 5rem;
+  }
+
+  &__header {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  &__btn {
+    padding: 10px 15px;
+    border: 1px solid black;
+    background: white;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.2s;
+
+    &:hover {
+      background: black;
+      color: white;
+    }
+
+    &--add {
+      margin-bottom: 15px;
+      display: block;
+      width: 100%;
+      margin-top: 1rem;
+    }
+
+    &--remove {
+      background: #ffdddd;
+      border: 1px solid black;
+
+      &:hover {
+        background: #ffaaaa;
+      }
+    }
+  }
+
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin-top: 1.5rem;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: left;
+  }
+
+  &__list-item {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    border-bottom: 1px dashed black;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  /*   &__list-container {
+    display: flex;
+  } */
+
+  &__removebtn {
+    float: right;
+  }
+
+  &__soundbtn {
+    padding-left: 1rem;
+  }
+
+  //fetched word
+  &__word {
+    font-size: 2rem;
+  }
+
+  &__audio {
+    width: 100%;
+  }
+}

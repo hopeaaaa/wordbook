@@ -1,6 +1,7 @@
 import "./WordCardComponent.scss";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import SoundIcon from "../../assets/icons/sound.svg";
 
 function WordCardComponent({ onSignInClick }) {
   const [word, setWord] = useState("");
@@ -108,89 +109,78 @@ function WordCardComponent({ onSignInClick }) {
     <section className="wordcard">
       <hr />
       <h3 className="wordcard__title">Translator Tool</h3>
-      <div className="wordcard__parent-container">
-        <div className="wordcard__search-container">
-          <div className="wordcard__input-div">
-            <div className="wordcard__fetched-container">
-              {error && <p className="wordcard__search-error">{error}</p>}
 
-              {translatedWord && (
-                <div className="wordcard__fetched-title-container">
-                  {audioUrl && (
-                    <button className="wordcard__soundbtn" onClick={playAudio}>
-                      🔊
-                    </button>
-                  )}
-                  <h2 className="wordcard__fetchedtitle">{translatedWord}</h2>
-                </div>
-              )}
-            </div>
-            <input
-              type="text"
-              placeholder="enter a word..."
-              value={word}
-              onChange={(e) => setWord(e.target.value)}
-              className="wordcard__search-input"
-            />
-          </div>
-          <div className="wordcard__btn-div">
-            <button className="wordcard__searchbtn" onClick={fetchTranslation}>
-              Translate
-            </button>
-            <div className="wordcard__btn-container">
-              <div className="wordcard__btn-edit-container">
-                <button className="wordcard__addbtn" onClick={addWord}>
-                  Add to Word List
-                </button>
-                <button
-                  className="wordcard__clearbtn"
-                  onClick={() => setTranslatedWord(null)}
-                >
-                  Clear
-                </button>
-              </div>
-            </div>
-          </div>
+      <div className="wordcard__container">
+        <h3 className="wordcard__subtitle">English to French Translator</h3>
+
+        <div className="wordcard__input-container">
+          <input
+            type="text"
+            placeholder="Enter a word..."
+            value={word}
+            onChange={(e) => setWord(e.target.value)}
+            className="wordcard__input"
+          />
+          <button className="wordcard__btn" onClick={fetchTranslation}>
+            Translate
+          </button>
         </div>
 
-        <div className="wordcard__wrapper">
-          <div className="vl"></div>
+        {error && <p className="wordcard__error">{error}</p>}
 
-          <div className="wordcard__added-words-container">
-            <p className="wordcard__wordlist-title"> Word List</p>
-
-            {addedWords.length === 0 ? (
-              <p className="wordcard__add-words-prompt">
-                <i>{/* Add words here! */}</i>
-              </p>
-            ) : (
-              <div className="wordcard__list-container">
-                {addedWords.map((wordData, index) => (
-                  <>
-                    <div className="wordcard__fetched-content" key={index}>
-                      <div className="wordcard__fetched-div">
-                        <strong className="wordcard__fetched-title">
-                          {wordData.french}
-                        </strong>{" "}
-                        / {wordData.english}
-                      </div>
-                      <div className="wordcard__fetched-btn-div">
-                        <button
-                          className="wordcard__removebtn"
-                          onClick={() => removeWord(index)}
-                        >
-                          Remove from Word List
-                        </button>
-                      </div>
-                    </div>
-                    <hr />
-                  </>
-                ))}
-                <button onClick={onSignInClick}>Save List / Log in </button>
-              </div>
+        {translatedWord && (
+          <div className="wordcard__result">
+            <h2 className="wordcard__translated">{translatedWord}</h2>
+            {audioUrl && (
+              <button className="wordcard__soundbtn" onClick={playAudio}>
+                <img src={SoundIcon} alt="Sound Icon" />
+              </button>
             )}
           </div>
+        )}
+
+        <button className="wordcard__addbtn" onClick={addWord}>
+          Add to Word List
+        </button>
+
+        <button
+          className="wordcard__clearbtn"
+          onClick={() => setTranslatedWord(null)}
+        >
+          Reset
+        </button>
+
+        <div className="wordcard__list">
+          <h4 className="wordcard__list-title">Word List</h4>
+          {addedWords.length === 0 ? (
+            <p className="wordcard__empty-list">No words added yet.</p>
+          ) : (
+            addedWords.map((wordData, index) => (
+              <div className="wordcard__list-item" key={index}>
+                <span className="wordcard__list-word">
+                  <strong>{wordData.french}</strong> / {wordData.english}
+                  <button
+                    className="wordcard__removebtn"
+                    onClick={() => removeWord(index)}
+                  >
+                    -
+                  </button>
+                </span>
+              </div>
+            ))
+          )}
         </div>
+        <button className="wordcard__savebtn" onClick={onSignInClick}>
+          <span>Save Word List</span>
+          <svg viewBox="0 0 13 10" height="10px" width="15px">
+            <path
+              d="M1 5L4 8L11 1"
+              stroke="black"
+              strokeWidth="2"
+              fill="none"
+            />
+          </svg>
+        </button>
       </div>
     </section>
   );

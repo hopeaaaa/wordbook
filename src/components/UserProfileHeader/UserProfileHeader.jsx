@@ -5,8 +5,7 @@ function UserProfileHeader({ userName }) {
     <header className="userprofile-header">
       <hr />
       <div className="userprofile-container">
-        <h2 className="userprofile__user-name-title">User: {userName}</h2>
-        {/* <img className="userprofile__photo" src="" alt="user profile photo" /> */}
+        <h3 className="userprofile__title">Saved Translations</h3>
         <div className="vl"></div>
       </div>
       <hr />

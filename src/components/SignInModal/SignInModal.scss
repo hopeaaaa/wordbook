@@ -1,3 +1,6 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/resets" as *;
+
 .signin {
   &__overlay {
     position: fixed;
@@ -13,7 +16,7 @@
   }
 
   &__content-container {
-    background: #fdf6e3;
+    background: $offwhite;
     border-radius: 8px;
     width: 500px;
     position: relative;
@@ -49,18 +52,27 @@
     padding-bottom: 2rem;
     padding-top: 1rem;
     font-size: 20px;
+    font-weight: 600;
   }
 
   &__btn {
-    border: solid;
-    background-color: green;
+    background-color: $green;
     padding: 1rem;
     margin-top: 1rem;
+    border-radius: 0.8rem;
+    color: white;
+    font-weight: 400;
   }
 
   &__forgot-btn,
   &__create-btn {
     padding: 1rem 0;
     align-self: center;
+  }
+
+  &__username-input,
+  &__email-input,
+  &__password-input {
+    padding: 0.5rem;
   }
 }

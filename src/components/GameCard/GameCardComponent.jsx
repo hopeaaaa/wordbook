@@ -111,11 +111,11 @@ function GameCardComponent({ onHelpClick }) {
             <div
               className="gamecard__magnifyingglass"
               style={{
-                left: `${mousePosition.x}px`,
-                top: `${mousePosition.y}px`,
+                left: `${mousePosition.x - 90}px`,
+                top: `${mousePosition.y - 10}px`,
                 backgroundImage: `url(${kitchensg})`,
-                backgroundPosition: `-${mousePosition.x * 2 - 45}px -${
-                  mousePosition.y * 2 - 45
+                backgroundPosition: `-${mousePosition.x * 2 - 200}px -${
+                  mousePosition.y * 2 - 200
                 }px`,
               }}
             ></div>
@@ -123,15 +123,15 @@ function GameCardComponent({ onHelpClick }) {
 
           <div className="gamecard__clickable-areas-container">
             {[
-              { name: "pan1", x: "430px", y: "110px" },
-              { name: "pan2", x: "490px", y: "110px" },
-              { name: "knife1", x: "320px", y: "390px" },
-              { name: "knife2", x: "830px", y: "330px" },
-              { name: "kettle1", x: "160px", y: "100px" },
-              { name: "kettle2", x: "660px", y: "170px" },
-              { name: "cup1", x: "260px", y: "340px" },
-              { name: "cup2", x: "760px", y: "100px" },
-              { name: "cup3", x: "810px", y: "300px" },
+              { name: "pan1", x: "430px", y: "190px" },
+              { name: "pan2", x: "490px", y: "190px" },
+              { name: "knife1", x: "320px", y: "470px" },
+              { name: "knife2", x: "830px", y: "410px" },
+              { name: "kettle1", x: "160px", y: "180px" },
+              { name: "kettle2", x: "660px", y: "250px" },
+              { name: "cup1", x: "260px", y: "420px" },
+              { name: "cup2", x: "760px", y: "180px" },
+              { name: "cup3", x: "810px", y: "380px" },
             ].map(({ name, x, y }) => (
               <div
                 key={name}

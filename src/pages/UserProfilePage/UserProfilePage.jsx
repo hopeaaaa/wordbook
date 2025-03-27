@@ -34,8 +34,8 @@ function UserProfilePage() {
 
   return (
     <div>
-      <UserProfileHeader userName={userName} />
-      <UserProfileCard userData={userData} />
+      {/* <UserProfileHeader /> */}
+      <UserProfileCard userName={userName} userData={userData} />
     </div>
   );
 }

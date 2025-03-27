@@ -1,15 +1,12 @@
 @font-face {
-  font-family: "Titillium Web";
-  src: url("./assets/fonts/alternative-files/TitilliumWeb-Regular.woff2")
-      format("woff2"),
-    url("./assets/fonts/TitilliumWeb-Regular.woff") format("woff");
-  font-weight: 400;
+  font-family: "Manuscript-Bold";
+  src: url("../../assets/fonts/Manuscript-serif/TTF/Manuscript-Bold.ttf");
 }
-
 @font-face {
-  font-family: "Titillium Web";
-  src: url("./assets/fonts/alternative-files/TitilliumWeb-SemiBold.woff2")
-      format("woff2"),
-    url("./assets/fonts/TitilliumWeb-SemiBold.woff") format("woff");
-  font-weight: 600;
+  font-family: "Manuscript-Light";
+  src: url("../../assets/fonts/Manuscript-serif/TTF/Manuscript-Light.ttf");
+}
+@font-face {
+  font-family: "Manuscript-Regular";
+  src: url("../../assets/fonts/Manuscript-serif/TTF/Manuscript-Regular.ttf");
 }
