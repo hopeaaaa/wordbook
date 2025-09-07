@@ -88,6 +88,8 @@ function GameCardComponent({ onHelpClick }) {
     }
   };
 
+  ///avoid using markup for styling, more flexibility
+
   return (
     <section className="gamecard">
       <hr />
@@ -111,11 +113,11 @@ function GameCardComponent({ onHelpClick }) {
             <div
               className="gamecard__magnifyingglass"
               style={{
-                left: `${mousePosition.x - 90}px`,
-                top: `${mousePosition.y - 10}px`,
+                left: `${mousePosition.x}px`,
+                top: `${mousePosition.y}px`,
                 backgroundImage: `url(${kitchensg})`,
-                backgroundPosition: `-${mousePosition.x * 2 - 200}px -${
-                  mousePosition.y * 2 - 200
+                backgroundPosition: `-${mousePosition.x * 2 - 60}px -${
+                  mousePosition.y * 2 - 60
                 }px`,
               }}
             ></div>
@@ -123,15 +125,15 @@ function GameCardComponent({ onHelpClick }) {
 
           <div className="gamecard__clickable-areas-container">
             {[
-              { name: "pan1", x: "430px", y: "190px" },
-              { name: "pan2", x: "490px", y: "190px" },
-              { name: "knife1", x: "320px", y: "470px" },
-              { name: "knife2", x: "830px", y: "410px" },
-              { name: "kettle1", x: "160px", y: "180px" },
-              { name: "kettle2", x: "660px", y: "250px" },
-              { name: "cup1", x: "260px", y: "420px" },
-              { name: "cup2", x: "760px", y: "180px" },
-              { name: "cup3", x: "810px", y: "380px" },
+              { name: "pan1", x: "430px", y: "110px" },
+              { name: "pan2", x: "490px", y: "110px" },
+              { name: "knife1", x: "320px", y: "390px" },
+              { name: "knife2", x: "830px", y: "330px" },
+              { name: "kettle1", x: "160px", y: "100px" },
+              { name: "kettle2", x: "660px", y: "170px" },
+              { name: "cup1", x: "260px", y: "340px" },
+              { name: "cup2", x: "760px", y: "100px" },
+              { name: "cup3", x: "810px", y: "300px" },
             ].map(({ name, x, y }) => (
               <div
                 key={name}
@@ -142,7 +144,6 @@ function GameCardComponent({ onHelpClick }) {
             ))}
           </div>
         </div>
-
         <div className="gamecard__settings-container">
           <button className="gamecard__help-btn" onClick={onHelpClick}>
             ?
@@ -170,7 +171,6 @@ function GameCardComponent({ onHelpClick }) {
           </button>
         </div>
       </div>
-
       <div className="gamecard__cards-container">
         {words.map((words, index) => (
           <div

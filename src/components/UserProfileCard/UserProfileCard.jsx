@@ -55,7 +55,7 @@ function UserProfileCard({ userData, userName }) {
         </ul>
         <div>
           <button className="userprofile__btn userprofile__btn--add">
-            Add to Saved Translations
+            Edit Saved Translations
           </button>
         </div>
       </div>

@@ -1,3 +1,6 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/resets" as *;
+
 .wordcard {
   display: flex;
   flex-direction: column;
@@ -41,14 +44,14 @@
   &__btn {
     padding: 10px 15px;
     /*     border: 1px solid black; */
-    background: black;
+    background: $green;
     color: white;
     cursor: pointer;
     font-weight: bold;
     transition: background 0.2s;
 
     &:hover {
-      background: coral;
+      background: black;
       color: white;
     }
   }

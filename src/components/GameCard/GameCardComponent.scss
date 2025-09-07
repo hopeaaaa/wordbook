@@ -1,4 +1,9 @@
 .gamecard {
+  &__upper-container {
+    display: flex;
+    margin: 4rem;
+  }
+
   &__settings-container {
     display: flex;
     flex-direction: column;
@@ -22,36 +27,8 @@
   }
 
   &__upper-container {
-    display: flex;
-    padding: 0 2rem 0 5rem; //trbl
-  }
-
-  &__magnifyingglass {
-    position: absolute;
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    border: 1px solid black;
-    background-size: 1976px auto;
-    background-repeat: no-repeat;
-    background-image: url("../../assets/images/kitchensg.svg");
-    pointer-events: none;
-    transform: translate(-50%, -50%);
-  }
-
-  &__img-container {
-    width: 988px;
-    overflow: visible;
-    cursor: none;
-    position: relative;
-    padding-top: 5rem;
-    /*     margin-left: 8rem; */
-    /*     padding-left: 5rem; */
-  }
-
-  &__img {
-    max-width: 100%;
-    max-height: 100%;
+    /*     display: flex;
+    padding: 0 2rem 0 5rem; */
     position: relative;
   }
 
@@ -67,7 +44,7 @@
     position: absolute;
     width: 50px;
     height: 50px;
-    /*   background-color: rgba(255, 255, 255, 0.2); */
+    /* background-color: rgba(255, 255, 255, 0.2); */
     border-radius: 50%;
     overflow: hidden;
     z-index: 10;
@@ -90,6 +67,36 @@
       transform: translate(-50%, -50%) scale(1);
       opacity: 1;
     }
+  }
+
+  &__magnifyingglass {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 1px solid black;
+    background-size: 1976px auto;
+    background-repeat: no-repeat;
+    background-image: url("../../assets/images/kitchensg.svg");
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+  }
+
+  &__img-container {
+    width: 988px;
+    overflow: visible;
+    cursor: none;
+    position: relative;
+    /*   padding-top: 5rem; */
+    /*     margin-left: 8rem; */
+    /*     padding-left: 5rem; */
+  }
+
+  &__img {
+    max-width: 100%;
+    max-height: 100%;
+    position: relative;
   }
 
   &__cards-container {
